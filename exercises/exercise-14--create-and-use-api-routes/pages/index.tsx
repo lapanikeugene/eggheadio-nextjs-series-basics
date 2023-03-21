@@ -18,7 +18,7 @@ const Home = () => {
   const [selectedUser, setSelectedUser] = useState<User>()
 
   const fetchUser = async (id: number) => {
-    const apiEndpoint = '' // ✍️ set the endpoint of your API handler
+    const apiEndpoint = `/api/users/${id}` // ✍️ set the endpoint of your API handler
     const res = await fetch(`${apiEndpoint}`)
     const data = await res.json()
 
