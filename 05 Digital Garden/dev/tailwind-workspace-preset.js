@@ -19,10 +19,6 @@ module.exports = {
   },
   plugins: [
 
+    require('@tailwindcss/typography')
   ],
-
-  //global import when you need preset for many apps. 
-  presets:[
-    require('../../tailwind-workspace-preset')
-  ]
 };
