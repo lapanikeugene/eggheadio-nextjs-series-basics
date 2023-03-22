@@ -3,6 +3,8 @@ const { join } = require('path');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  //just in time mode for tailwind. 
+  mode:'jit',
   // cut size of css by removing of all unusing tailwind classes
   //createGlobPatternsForDependencies - automatically get info about all new added components.  
   purge:[join(__dirname,
