@@ -7,6 +7,7 @@ import {CustomLink, Youtube} from '@dev/shared/mdx-elements'
 import {getParsedContentBySlug, renderMarkdown} from '../../../../libs/markdown/src/lib/markdown'
 
 import {MDXRemote} from "next-mdx-remote"
+import dynamic from "next/dynamic";
 
 
 export interface ArticleProps extends ParsedUrlQuery {
@@ -14,12 +15,17 @@ export interface ArticleProps extends ParsedUrlQuery {
 }
 
 const MDXElements = {
-    Youtube,
+    Youtube:dynamic(async()=>{
+        //load component if it only necessary. 
+       const components =  await import('@dev/shared/mdx-elements');
+       return components.Youtube
+    }
+    ),
     CustomLink
 }
   
 //create path to texts 
-const POSTS_PATH = join(process.cwd(),'_articles');
+const POSTS_PATH = join(process.cwd(),process.env.articleMorkDownPath);
 
 export default function Article({frontMatter,html}) {
     console.log(frontMatter);
